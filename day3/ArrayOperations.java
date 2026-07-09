@@ -20,8 +20,8 @@ public class ArrayOperations
     // 2. Reverse the array
     static void reverseArray(ArrayADT arr)
     {
-        int size = arr.getSize();
-        int left = 0, right = size - 1;
+        int left = 0;
+		int right = arr.getSize() - 1;
 
         while(left < right)
         {
@@ -42,26 +42,45 @@ public class ArrayOperations
         int size = arr.getSize();
         boolean[] counted = new boolean[size];
 
-        for(int i = 0; i < size; i++)
+        // for(int i = 0; i < size; i++)
+        // {
+            // if(counted[i]) 	
+			// {
+				// continue;	// idhu already count aagirichu, skip pannu
+			// }
+
+            // int value = arr.getElement(i);
+            // int count = 1;
+
+            // for(int j = i + 1; j < size; j++)
+            // {
+                // if(arr.getElement(j) == value)
+                // {
+                    // count++;
+                    // counted[j] = true;
+                // }
+            // }
+            // System.out.println(value + " -> " + count + " times");
+        // }
+		for(int i = 0; i < size; i++)
         {
-            if(counted[i]) 
-				
+            if(!counted[i]) 	
+			{
+				int value = arr.getElement(i);
+				int count = 1;
+
+				for(int j = i + 1; j < size; j++)
 				{
-					continue;	// idhu already count aagirichu, skip pannunga
+					if(arr.getElement(j) == value)
+					{
+						count++;
+						counted[j] = true;
+					}
 				}
+				System.out.println(value + " -> " + count + " times");
+			}
 
-            int value = arr.getElement(i);
-            int count = 1;
-
-            for(int j = i + 1; j < size; j++)
-            {
-                if(arr.getElement(j) == value)
-                {
-                    count++;
-                    counted[j] = true;
-                }
-            }
-            System.out.println(value + " -> " + count + " times");
+            
         }
     }
 
@@ -93,7 +112,7 @@ public class ArrayOperations
             insertPos++;
         }
 
-        // Left-over elements irundha, avatha add pannunga
+        // Left-over elements irundha, atha add pannu
         while(i < size1)
         {
             merged.insertElement(insertPos, arr1.getElement(i));
