@@ -1,22 +1,20 @@
 class Node
 {
 	int data;
-	Node int next;
+	Node next;
 	
 	public Node(int data)
 	{
 		this.data = data;
-		this.next = next;
+		this.next = null;
 	}
-	
 }
 
 public class QueueADTLinkedList
 {
-	Node int front;
-	Node int rear;
+	Node front;
+	Node rear;
 	
-
 	public QueueADTLinkedList()
 	{
 		front = null;
@@ -30,18 +28,25 @@ public class QueueADTLinkedList
 	
 	public void display()
 	{
-		if(isEmpty())
+		if (isEmpty())
 		{
-			Syatem.out.println("Queue is epty!");
+			System.out.println("Queue is empty!");
 			return;
 		}
 		System.out.print("Queue: ");
-		
+		Node temp = front;
+		while (temp != null)
+		{
+			System.out.print(temp.data + " ");
+			temp = temp.next;
+		}
+		System.out.println();
 	}
 	
-	public void enqueue()
+	public void enqueue(int data)
 	{
-		if(isEmpty())
+		Node newNode = new Node(data);
+		if (isEmpty())
 		{
 			front = newNode;
 			rear = newNode;
@@ -55,16 +60,18 @@ public class QueueADTLinkedList
 	
 	public int dequeue()
 	{
-		if(isEmpty())
+		if (isEmpty())
 		{
-			Syetem.out.println("Can't dequeue!")
+			System.out.println("Can't dequeue!");
+			return -1;
 		}
-		int current = front.data;
-		front = front.next
 		
-		if(front == null)
+		int current = front.data;
+		front = front.next;
+		
+		if (front == null)
 		{
-			rear == null;
+			rear = null;
 		}
 		return current;
 	}
@@ -72,6 +79,13 @@ public class QueueADTLinkedList
 	public static void main(String args[])
 	{
 		QueueADTLinkedList qu = new QueueADTLinkedList();
+		
+		qu.enqueue(10);
+		qu.enqueue(20);
+		qu.enqueue(30);
+		qu.display(); 
+		
+		System.out.println("Dequeued: " + qu.dequeue());
+		qu.display();
 	}
-	
 }
