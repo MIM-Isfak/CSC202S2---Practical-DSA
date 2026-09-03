@@ -1,0 +1,91 @@
+public class BinaryTreeADTArray
+{
+	int treeArray[];
+	int maxSize;
+	int currentSize;
+	
+	public BinaryTreeADTArray(int maxSize)
+	{
+		this.maxSize = maxSize;
+		this.treeArray = new int[maxSize];
+		this.currentSize = 0;
+	}
+	
+	public boolean isEmpty()
+	{
+		return currentSize == 0;
+	}
+	
+	public boolean isFull()
+	{
+		return currentSize == maxSize;
+	}
+	
+	public void insertElement(int data)
+	{
+		if(isFull())
+		{
+			System.out.println("Tree overflow");
+		}
+		else
+		{
+			treeArray[currentSize++] = data;
+			System.out.println("Inserted "+ data);
+		}
+	}
+	
+	public void levelOrderTraversal()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Tree is empty.");
+		}
+		else
+		{
+			for(int i = 0; i < currentSize; i++)
+			{
+				if(treeArray[i]!=0)
+				{
+					System.out.print(treeArray[i] + " ");
+				}
+			}
+			System.out.println();
+		}
+	}
+	
+	public void inorderTraversal(int index)
+	{
+		if(isEmpty())
+		{
+			System.out.println("tree underflow");
+		}
+		else
+		{
+			if(index < 0  index >= currentSize)
+			{
+				System.out.println("index is not correct");
+				return;
+			}
+			else
+			{
+				inorderTraversal(2 * index +1);
+				System.out.print(treeArray[index] + " ");
+				inorderTraversal(2 * index +2);
+			}
+		}
+	}
+	
+	public static void main(String args[])
+	{
+		BinaryTreeADTArray tr = new BinaryTreeADTArray(10);
+		tr.insertElement(5);
+		tr.insertElement(3);
+		tr.insertElement(9);
+		tr.insertElement(2);
+		tr.insertElement(4);
+		tr.insertElement(7);
+		tr.insertElement(1);
+		
+		tr.levelOrderTraversal();
+	}
+}
