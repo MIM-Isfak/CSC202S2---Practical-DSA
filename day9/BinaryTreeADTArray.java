@@ -87,5 +87,6 @@ public class BinaryTreeADTArray
 		tr.insertElement(1);
 		
 		tr.levelOrderTraversal();
+		tr.inorderTraversal(0); // should get output like 2,3,4,5,7,9,1
 	}
 }
