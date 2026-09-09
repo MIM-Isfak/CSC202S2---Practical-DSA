@@ -58,21 +58,15 @@ public class BinaryTreeADTArray
 		if(isEmpty())
 		{
 			System.out.println("tree underflow");
+			return;
 		}
-		else
+		if(index < 0 || index >= currentSize)
 		{
-			if(index < 0  index >= currentSize)
-			{
-				System.out.println("index is not correct");
-				return;
-			}
-			else
-			{
-				inorderTraversal(2 * index +1);
-				System.out.print(treeArray[index] + " ");
-				inorderTraversal(2 * index +2);
-			}
+			return;
 		}
+		inorderTraversal(2 * index + 1);
+		System.out.print(treeArray[index] + " ");
+		inorderTraversal(2 * index + 2);
 	}
 	
 	public static void main(String args[])
@@ -87,6 +81,7 @@ public class BinaryTreeADTArray
 		tr.insertElement(1);
 		
 		tr.levelOrderTraversal();
-		tr.inorderTraversal(0); // should get output like 2,3,4,5,7,9,1
+		tr.inorderTraversal(0);
+		System.out.println();
 	}
 }
