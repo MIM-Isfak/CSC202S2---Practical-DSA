@@ -62,11 +62,48 @@ public class BinaryTreeADTArray
 		}
 		if(index < 0 || index >= currentSize)
 		{
+			return; 
+		}
+		
+		inorderTraversal(2 * index + 1);          // left
+		System.out.print(treeArray[index] + " "); // root
+		inorderTraversal(2 * index + 2);          // right
+	}
+	
+	public int searchElement(int data)
+	{
+		
+		
+		for(int i = 0; i < currentSize; i++)
+		{
+			if(treeArray[i] == data)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	public void deleteElement(int data)
+	{
+		if(isEmpty())
+		{
+			System.out.println("Tree underflow. Cannot delete.");
 			return;
 		}
-		inorderTraversal(2 * index + 1);
-		System.out.print(treeArray[index] + " ");
-		inorderTraversal(2 * index + 2);
+		
+		int index = searchElement(data);
+		
+		if(index == -1)
+		{
+			System.out.println(data + " not found in the tree.");
+			return;
+		}
+		treeArray[index] = treeArray[currentSize - 1];
+		treeArray[currentSize - 1] = 0;
+		currentSize--;
+		
+		System.out.println("Deleted " + data);
 	}
 	
 	public static void main(String args[])
@@ -83,5 +120,8 @@ public class BinaryTreeADTArray
 		tr.levelOrderTraversal();
 		tr.inorderTraversal(0);
 		System.out.println();
+		System.out.println("Index of searched element = "+tr.searchElement(9));
+		tr.deleteElement(4);
+		tr.inorderTraversal(0);
 	}
 }
