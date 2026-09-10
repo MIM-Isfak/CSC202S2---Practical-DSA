@@ -145,6 +145,6 @@ public class BinaryTreeArrayQuestion
 		
 		tr.levelOrderTraversal();
 		tr.getChildren("y");
-		tr.getParent("r");
+		tr.getParent("r"); //find hight usiong recursive
 	}
 }
